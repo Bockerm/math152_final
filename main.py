@@ -1,9 +1,2 @@
-print("hello world")
-# edit
+# This file is for creating the GUI
 
-def test():
-    print("test")
-
-test()
-
-# edit 2
