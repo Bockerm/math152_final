@@ -1,1 +1,1 @@
-# Fuck you
+print("hello world")
