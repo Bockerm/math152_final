@@ -1,10 +1,11 @@
 # This file is for creating the GUI
-from functions import test 
+from functions import euclidean, extended 
 from tkinter import *
 
 # Global variables
 iFont = ('Raleway', '18', 'bold')
 eFont = ('Times', '20', 'italic')
+bFont = ('Raleway', '15')
 
 
 ########################################### EUCLIDEAN ALGORITHM
@@ -27,14 +28,23 @@ f2.grid(columnspan=1, column=1, row=1)
 aLabel = Label(f1, text="a = ", font= eFont)
 aLabel.pack(side='left')
 a = Entry(f1)
-a.insert(0, "Enter a positive int")
+# a.insert(0, "Enter a positive int")
 a.pack(side='right')
 
 bLabel = Label(f2, text="b = ", font= eFont)
 bLabel.pack(side='left')
 b = Entry(f2)
-b.insert(0, 'Enter a positive int')
+# b.insert(0, 'Enter a positive int')
 b.pack(side='right')
+
+# function for calculating GCD
+def calc():
+    return
+    
+
+# Calculate button 
+calcButton = Button(root_1, text='Calculate', font=bFont, command=calc)
+calcButton.grid(columnspan=2, row=2)
 
 root_1.mainloop()
 
