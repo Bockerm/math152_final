@@ -9,16 +9,19 @@ bFont = ('Raleway', '15')
 gcdLst = []
 extLst = []
 
-########################################### EUCLIDEAN ALGORITHM
+########################################### EUCLIDEAN and EXTENDED EUCLIDEAN 
 root_1 = Tk()
 root_1.title("Euclidean Algorithm")
 canvas_1 = Canvas(root_1, width=400, height=300)
 canvas_1.grid(columnspan=3, rowspan=5)
 
 # Instructions 
-
-insts = Label(root_1, text='This function calculates the GCD of a and b using the euclidean algorithm', font=iFont)
-insts.grid(columnspan=3, column=0, row=0)
+fTitle = Frame(root_1)
+insts = Label(fTitle, text='This function calculates the GCD and/or Bezout Coefficients of a and b using the euclidean', font=iFont)
+insts_2 = Label(fTitle, text='and extended euclidean algorithms', font=iFont)
+insts.pack(side='top')
+insts_2.pack(side='bottom')
+fTitle.grid(columnspan=3, row=0)
 
 # Inputs
 f1 = Frame(root_1)
@@ -50,21 +53,18 @@ gcdLabel.pack(side='top')
 extLabel.pack(side='bottom')
 
 def clearContent():
-    global gcdLst
-    global extLst
     def helper(lst):
         l = len(lst)
         for i in range(l):
             lst[l-(i+1)].destroy()
             del lst[l - (i+1)]
-    
     if gcdLst:
         helper(gcdLst)
     elif extLst:
         helper(extLst)
     else:
         try:
-            emLabel.grid_remove()
+            emLabel.destroy()
         except:
             pass
 
@@ -104,8 +104,6 @@ def gcdCmd():
         gcdLabel = Label(root_1, text=gcdEq, font=eFont)
         gcdLabel.grid(columnspan=3, row=row)
         gcdLst.append(gcdLabel)
-        print(gcdLst)
-        print(extLst)
     else:
         Emsg = 'Input is not an INT'
         errormessage(Emsg, row)
@@ -124,6 +122,8 @@ def extCmd():
         a = int(a)
         b = int(b)
         a,b = max(a, b), min(a,b)
+        aF = a 
+        bF = b
         s_i=1
         s_j=0
         t_i=0
@@ -152,7 +152,7 @@ def extCmd():
         extLst.append(rInitStep)
         
         s_new = s_i-s_j*(int(a/b))
-        sInitEq = str(s_new) + ' = '  + str(s_i) + " - " + str(s_j) + '(' + str(int(a/b)) + ')' 
+        sInitEq = str(s_new) + ' = '  + str(s_i)  + " - "  + str(s_j) + '(' + str(int(a/b)) + ')' 
         sInitStep = Label(root_1, text=sInitEq, font=eFont)
         sInitStep.grid(columnspan=1, row=row, column=1)
         extLst.append(sInitStep)
@@ -163,6 +163,7 @@ def extCmd():
         tInitStep.grid(columnspan=1, row=row, column=2)
         extLst.append(tInitStep)
         row+=1
+        
         while (a%b) != 0:
             a, b = b, a%b
             t_j, t_i = t_new, t_j
@@ -175,18 +176,52 @@ def extCmd():
             rStep.grid(columnspan=1, row=row, column=0)
             extLst.append(rStep)
             
-            sEq = str(s_new) + ' = '  + str(s_i) + " - " + str(s_j) + '(' + str(int(a/b)) + ')' 
+            sgn = " - "
+            if s_j < 0:
+                sgn = " + "
+            sEq = str(s_new) + ' = '  + str(s_i) + sgn + str(abs(s_j)) + '(' + str(int(a/b)) + ')' 
             sStep = Label(root_1, text=sEq, font=eFont)
             sStep.grid(columnspan=1, row=row, column=1)
             extLst.append(sStep)
 
-            tEq = str(t_new) + ' = '  + str(t_i) + " - " + str(t_j) + '(' + str(int(a/b)) + ')' 
+            sgn = " - "
+            if t_j < 0:
+                sgn = " + "
+            tEq = str(t_new) + ' = '  + str(t_i) + sgn + str(abs(t_j)) + '(' + str(int(a/b)) + ')' 
             tStep = Label(root_1, text=tEq, font=eFont)
             tStep.grid(columnspan=1, row=row, column=2)
             extLst.append(tStep)
             row+=1
-        print(gcdLst)
-        print(extLst)
+        
+        rFinalEq = u"r\u2096" " = " + str(b)
+        rFinalL = Label(root_1, text=rFinalEq, font=eFont)
+        rFinalL.grid(columnspan=1, row=row, column=0)
+        extLst.append(rFinalL)
+
+        sFinalEq = u"s\u2096" + " = " + str(s_j) 
+        sFinalL = Label(root_1, text=sFinalEq, font=eFont)
+        sFinalL.grid(columnspan=1, row=row, column=1)
+        extLst.append(sFinalL)
+
+        tFinalEq = u"t\u2096" + " = " + str(t_j)
+        tFinalL = Label(root_1, text=tFinalEq, font=eFont)
+        tFinalL.grid(columnspan=1, row=row, column=2)
+        extLst.append(tFinalL)
+        row+=1
+
+        refLabel = Label(root_1, text=u"r\u2096"+"= a"+u"s\u2096"+"+ b"+u"t\u2096", font=eFont)
+        refLabel.grid(columnspan=3, row=row)
+        extLst.append(refLabel)
+        row+=1
+
+        finalEq = str(b) + " = " + str(aF) + "(" + str(s_j) + ") + " + str(bF) + "(" + str(t_j) + ")"
+        finalL = Label(root_1, text=finalEq, font=eFont)
+        finalL.grid(columnspan=3, row=row)
+        extLst.append(finalL)
+        row+=1
+
+        buffer = Label(root_1)
+        buffer.grid(columnspan=3, row=row)
     else:
         Emsg = 'Input is not an INT'
         errormessage(Emsg, row)
