@@ -50,17 +50,18 @@ gcdLabel.pack(side='top')
 extLabel.pack(side='bottom')
 
 def clearContent():
-    
+    global gcdLst
+    global extLst
     def helper(lst):
-        for l in lst:
-            l.grid_remove()
-            lst.pop()
+        l = len(lst)
+        for i in range(l):
+            lst[l-(i+1)].destroy()
+            del lst[l - (i+1)]
     
     if gcdLst:
         helper(gcdLst)
     elif extLst:
         helper(extLst)
-    
     else:
         try:
             emLabel.grid_remove()
@@ -103,6 +104,8 @@ def gcdCmd():
         gcdLabel = Label(root_1, text=gcdEq, font=eFont)
         gcdLabel.grid(columnspan=3, row=row)
         gcdLst.append(gcdLabel)
+        print(gcdLst)
+        print(extLst)
     else:
         Emsg = 'Input is not an INT'
         errormessage(Emsg, row)
@@ -182,7 +185,8 @@ def extCmd():
             tStep.grid(columnspan=1, row=row, column=2)
             extLst.append(tStep)
             row+=1
-
+        print(gcdLst)
+        print(extLst)
     else:
         Emsg = 'Input is not an INT'
         errormessage(Emsg, row)
