@@ -1,5 +1,5 @@
 # This file is for creating the GUI
-from functions import euclidean, extended 
+
 from tkinter import *
 
 # Global variables
@@ -242,28 +242,3 @@ extButton.grid(columnspan=2, row=2, column=1)
 
 root_1.mainloop()
 
-########################################### EXTENDED EUCLIDEAN ALGORITHM
-# root_2 = Tk()
-# root_2.title("Extended Euclidean Algorithm")
-# canvas_2 = Canvas(root_2, width=600, height=300)
-# canvas_2.grid(columnspan=3, rowspan=3)
-
-# # instructions
-
-
-# ########################################### FERMAT'S LITTLE THEOREM AND EULER'S TOTIENT THEOREM
-# root_3 = Tk()
-# root_3.title("Fermat’s Little Theorem and Euler’s Totient Theorem")
-# canvas_3 = Canvas(root_3, width=600, height=300)
-# canvas_3.grid(columnspan=3, rowspan=3)
-
-# # instructions 
-
-
-# ########################################### CLOCK ARITHMETIC
-# root_4 = Tk()
-# root_4.title("Clock Arithmetic")
-# canvas_4 = Canvas(root_4, width=600, height=300)
-# canvas_4.grid(columnspan=3, rowspan=3)
-
-# instructions 
