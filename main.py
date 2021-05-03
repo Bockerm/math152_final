@@ -19,6 +19,8 @@ canvas_1.grid(columnspan=3, rowspan=5)
 fTitle = Frame(root_1)
 insts = Label(fTitle, text='This function calculates the GCD and/or Bezout Coefficients of a and b using the euclidean', font=iFont)
 insts_2 = Label(fTitle, text='and extended euclidean algorithms', font=iFont)
+buffer = Label(root_1)
+buffer.grid(columnspan=3, row=1)
 insts.pack(side='top')
 insts_2.pack(side='bottom')
 fTitle.grid(columnspan=3, row=0)
@@ -29,7 +31,7 @@ f11 = Frame(f1)
 f12 = Frame(f1)
 f11.pack(side='top')
 f12.pack(side='bottom')
-f1.grid(columnspan=1, column=0, row=1)
+f1.grid(columnspan=1, column=0, row=2)
 
 e1Label = Label(f11, text="a = ", font= eFont)
 e1Label.pack(side='left')
@@ -46,7 +48,7 @@ f21 = Frame(f2)
 f22 = Frame(f2)
 f21.pack(side='top')
 f22.pack(side='bottom')
-f2.grid(columnspan=2, column=1, row=1)
+f2.grid(columnspan=2, column=1, row=2)
 gcdLabel = Label(f21, text=u"r\u2096"+" = GCD(a,b)", font=eFont)
 extLabel = Label(f22, text=u"r\u2096"+"= a"+u"s\u2096"+"+ b"+u"t\u2096", font=eFont)
 gcdLabel.pack(side='top')
@@ -82,7 +84,7 @@ def gcdCmd():
     # make sure input for both entries are ints
     a = e1.get()
     b = e2.get()
-    row = 3 
+    row = 4
     if a.isdigit() and b.isdigit():
         a = int(a)
         b = int(b)
@@ -117,7 +119,7 @@ def extCmd():
     # make sure input for both entries are ints
     a = e1.get()
     b = e2.get()
-    row = 3 
+    row = 4
     if a.isdigit() and b.isdigit():
         a = int(a)
         b = int(b)
@@ -232,13 +234,13 @@ def extCmd():
 gcdText = StringVar()
 gcdButton = Button(root_1, textvariable=gcdText, font=bFont, command=gcdCmd)
 gcdText.set('GCD using Euclidean')
-gcdButton.grid(columnspan=1, row=2, column=0)
+gcdButton.grid(columnspan=1, row=3, column=0)
 
 # Extended 
 extText = StringVar()
 extButton = Button(root_1, textvariable=extText, font=bFont, command=extCmd)
 extText.set('GCD and Bezout Coefficients using Extended Euclidean')
-extButton.grid(columnspan=2, row=2, column=1)
+extButton.grid(columnspan=2, row=3, column=1)
 
 root_1.mainloop()
 
