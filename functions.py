@@ -23,3 +23,29 @@ def extended(a, b, s_i=1, s_j=0, t_i=0, t_j=1):
 
 def totient()
     return
+
+# assumming you start off the week on a Sunday
+def clockarithmetic (hours):
+    timeofday = hours%24
+    daysover = (hours-timeofday)/7
+    if daysover == 1:
+        Day = "Monday"
+    if daysover == 2:
+        Day = "Tuesday" 
+    if daysover ==3:
+        Day = "Wednesday"
+    if daysover == 4:
+        Day = "Thursday"
+    if daysover == 5:
+        Day = "Friday" 
+    if daysover == 6:
+        Day = "Saturday"
+    else:
+        Day = "Sunday"
+    return print(Day, timeofday)
+
+    
+    
+    
+    
+    
