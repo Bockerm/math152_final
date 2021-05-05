@@ -26,10 +26,10 @@ def extended(a, b, s_i=1, s_j=0, t_i=0, t_j=1):
 #Fermat Little's Theorem states that if p is a prime number, then for any integer a, the number a^p – a is an integer multiple of p. 
 #First, we check is the input is prime by using Wilson's Theorem which states a natural number p > 1 is a prime number if (p - 1) ! ≡  -1 mod p 
 
-def isprime(j)
-    (j-1)! == -1 % j
+def isprime(j):
+    (j-1) != -1 % j
 
-def fermatlittle(prime, a)
+def fermatlittle(prime, a):
     if isprime(prime):
         compute = a ** prime - a
         return (compute % p == 0)
@@ -37,6 +37,7 @@ def fermatlittle(prime, a)
         return ("Input was not a prime number")
     
 # assumming you start off the week on a Sunday
+# rewrite to incorporate date and time input 
 def clockarithmetic (hours):
     timeofday = hours%24
     daysover = (hours-timeofday)/7
