@@ -106,6 +106,10 @@ def gcdCmd():
         gcdLabel = Label(root_1, text=gcdEq, font=eFont)
         gcdLabel.grid(columnspan=3, row=row)
         gcdLst.append(gcdLabel)
+        row+=1
+
+        buffer = Label(root_1)
+        buffer.grid(columnspan=3, row=row)
     else:
         Emsg = 'Input is not an INT'
         errormessage(Emsg, row)
