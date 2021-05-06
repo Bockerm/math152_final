@@ -50,10 +50,58 @@ nEntry.pack(side='right')
 
 # unicode for phi \u03A6
 
+def clearContent(): 
+    l = len(widgLst)
+    for i in range(l):
+        widgLst[l-(i+1)].destroy()
+        del widgLst[l - (i+1)]
+  
+
+def isprime(n):
+    if n > 1:
+        for i in range(2, int(n/2)+1):
+            if (n % i) == 0:
+                return False
+        else:
+            return True
+    else:
+        return False
+
 
 
 def fermats():
-    return
+    global widgLst
+    row = 5
+    a = int(aEntry.get())
+    p = int(pEntry.get())
+    n = int(nEntry.get())
+    if not isprime(p):
+        errorMSG = 'p is not a prime number'
+        errorLabel = Label(root, text=errorMSG, font=iFont)
+        errorLabel.grid(columnspan=3, row=row)
+        widgLst.append(errorLabel)
+    else:
+        step1Text = "Apply Euler's Totient Theorem to n"
+        step1Label = Label(root, text=step1Text, font=eFont)
+        step1Label.grid(columnspan=3, row=row)
+        widgLst.append(step1Label)
+        row+=1
+
+
+        totientEq = str(p) + " - 1 = " + str(p-1)
+        totientLabel = Label(root, text=totientEq, font=eFont)
+        totientLabel.grid(columnspan=3, row=row)
+        widgLst.append(totientLabel)
+        row+=1
+
+        step2Text = "Apply Fermat's Little Theorem"
+        step2Label = Label(root, text=step2Text, font=eFont)
+        step2Label.grid(columnspan=3, row=row)
+        widgLst.append(step2Label)
+        row+=1
+
+        # fermats1 = 
+    
 
 
 
