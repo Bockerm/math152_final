@@ -39,7 +39,7 @@ def fermatlittle(prime, a):
 # assumming you start off the week on a Sunday
 # rewrite to incorporate date and time input 
 def clockarithmetic (hours):
-    timeofday = hours%24
+    timeofday = hours/24
     daysover = (hours-timeofday)/7
     if daysover == 1:
         Day = "Monday"
