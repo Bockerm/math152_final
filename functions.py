@@ -32,7 +32,7 @@ def isprime(j):
 def fermatlittle(prime, a):
     if isprime(prime):
         compute = a ** prime - a
-        return (compute % p == 0)
+        return ((compute % prime) == 0)
     else:
         return ("Input was not a prime number")
     
