@@ -10,23 +10,23 @@ gcdLst = []
 extLst = []
 
 ########################################### EUCLIDEAN and EXTENDED EUCLIDEAN 
-root_1 = Tk()
-root_1.title("Euclidean Algorithm")
-canvas_1 = Canvas(root_1, width=400, height=300)
+root = Tk()
+root.title("Euclidean Algorithm")
+canvas_1 = Canvas(root, width=400, height=300)
 canvas_1.grid(columnspan=3, rowspan=5)
 
 # Instructions 
-fTitle = Frame(root_1)
+fTitle = Frame(root)
 insts = Label(fTitle, text='This function calculates the GCD and/or Bezout Coefficients of a and b using the euclidean', font=iFont)
 insts_2 = Label(fTitle, text='and extended euclidean algorithms', font=iFont)
-buffer = Label(root_1)
+buffer = Label(root)
 buffer.grid(columnspan=3, row=1)
 insts.pack(side='top')
 insts_2.pack(side='bottom')
 fTitle.grid(columnspan=3, row=0)
 
 # Inputs
-f1 = Frame(root_1)
+f1 = Frame(root)
 f11 = Frame(f1)
 f12 = Frame(f1)
 f11.pack(side='top')
@@ -43,7 +43,7 @@ e2Label.pack(side='left')
 e2 = Entry(f12)
 e2.pack(side='right')
 
-f2 = Frame(root_1)
+f2 = Frame(root)
 f21 = Frame(f2)
 f22 = Frame(f2)
 f21.pack(side='top')
@@ -73,7 +73,7 @@ def clearContent():
 
 def errormessage(s, row):
     global emLabel
-    emLabel = Label(root_1, text = s, font=iFont)
+    emLabel = Label(root, text = s, font=iFont)
     emLabel.grid(columnspan=3, row=row)
 
 
@@ -91,24 +91,24 @@ def gcdCmd():
         a,b = max(a, b), min(a,b)
         gcdText.set('Calculating...')
         initEq = str(a) + '=' + str(b) + '(' + str(int(a/b)) + ') + ' + str(a%b) 
-        initStep = Label(root_1, text=initEq, font=eFont)
+        initStep = Label(root, text=initEq, font=eFont)
         initStep.grid(columnspan=3, row=row)
         gcdLst.append(initStep)
         row+=1
         while (a%b) != 0:
             a,b = b, a%b
             eq = str(a) + "=" + str(b) + "(" + str(int(a/b)) + ") + " + str(a%b)
-            step = Label(root_1, text=eq, font=eFont)
+            step = Label(root, text=eq, font=eFont)
             step.grid(columnspan=3, row=row)
             gcdLst.append(step)
             row+=1
         gcdEq = str(b) + "= GCD(" + e1.get() + ',' + e2.get() + ')'
-        gcdLabel = Label(root_1, text=gcdEq, font=eFont)
+        gcdLabel = Label(root, text=gcdEq, font=eFont)
         gcdLabel.grid(columnspan=3, row=row)
         gcdLst.append(gcdLabel)
         row+=1
 
-        buffer = Label(root_1)
+        buffer = Label(root)
         buffer.grid(columnspan=3, row=row)
     else:
         Emsg = 'Input is not an INT'
@@ -137,35 +137,35 @@ def extCmd():
         extText.set('Calculating...')
 
         rExampleEq = u"r\u2096\u208a\u2081" + " = " + u"r\u2096\u208b\u2081" + " - " + u"r\u2096" + u"q\u2096"
-        rExampleL = Label(root_1, text=rExampleEq, font=eFont)
+        rExampleL = Label(root, text=rExampleEq, font=eFont)
         rExampleL.grid(columnspan=1, row=row, column=0)
         extLst.append(rExampleL)
 
         sExampleEq = u"s\u2096\u208a\u2081" + " = " + u"s\u2096\u208b\u2081" + " - " + u"s\u2096" + u"q\u2096"
-        sExampleL = Label(root_1, text=sExampleEq, font=eFont)
+        sExampleL = Label(root, text=sExampleEq, font=eFont)
         sExampleL.grid(columnspan=1, row=row, column=1)
         extLst.append(sExampleL)
 
         tExampleEq = u"t\u2096\u208a\u2081" + " = " + u"t\u2096\u208b\u2081" + " - " + u"t\u2096" + u"q\u2096   "
-        tExampleL = Label(root_1, text=tExampleEq, font=eFont)
+        tExampleL = Label(root, text=tExampleEq, font=eFont)
         tExampleL.grid(columnspan=1, row=row, column=2)
         extLst.append(tExampleL)
         row+=1
 
         rInitEq = str(a%b) + ' = '  + str(a) + " - " + str(b) + '(' + str(int(a/b)) + ')' 
-        rInitStep = Label(root_1, text=rInitEq, font=eFont)
+        rInitStep = Label(root, text=rInitEq, font=eFont)
         rInitStep.grid(columnspan=1, row=row, column=0)
         extLst.append(rInitStep)
         
         s_new = s_i-s_j*(int(a/b))
         sInitEq = str(s_new) + ' = '  + str(s_i)  + " - "  + str(s_j) + '(' + str(int(a/b)) + ')' 
-        sInitStep = Label(root_1, text=sInitEq, font=eFont)
+        sInitStep = Label(root, text=sInitEq, font=eFont)
         sInitStep.grid(columnspan=1, row=row, column=1)
         extLst.append(sInitStep)
 
         t_new = t_i-t_j*(int(a/b))
         tInitEq = str(t_new) + ' = '  + str(t_i) + " - " + str(t_j) + '(' + str(int(a/b)) + ')' 
-        tInitStep = Label(root_1, text=tInitEq, font=eFont)
+        tInitStep = Label(root, text=tInitEq, font=eFont)
         tInitStep.grid(columnspan=1, row=row, column=2)
         extLst.append(tInitStep)
         row+=1
@@ -178,7 +178,7 @@ def extCmd():
             t_new = t_i-t_j*(int(a/b))
 
             rEq = str(a%b) + ' = '  + str(a) + " - " + str(b) + '(' + str(int(a/b)) + ')' 
-            rStep = Label(root_1, text=rEq, font=eFont)
+            rStep = Label(root, text=rEq, font=eFont)
             rStep.grid(columnspan=1, row=row, column=0)
             extLst.append(rStep)
             
@@ -186,7 +186,7 @@ def extCmd():
             if s_j < 0:
                 sgn = " + "
             sEq = str(s_new) + ' = '  + str(s_i) + sgn + str(abs(s_j)) + '(' + str(int(a/b)) + ')' 
-            sStep = Label(root_1, text=sEq, font=eFont)
+            sStep = Label(root, text=sEq, font=eFont)
             sStep.grid(columnspan=1, row=row, column=1)
             extLst.append(sStep)
 
@@ -194,39 +194,39 @@ def extCmd():
             if t_j < 0:
                 sgn = " + "
             tEq = str(t_new) + ' = '  + str(t_i) + sgn + str(abs(t_j)) + '(' + str(int(a/b)) + ')' 
-            tStep = Label(root_1, text=tEq, font=eFont)
+            tStep = Label(root, text=tEq, font=eFont)
             tStep.grid(columnspan=1, row=row, column=2)
             extLst.append(tStep)
             row+=1
         
         rFinalEq = u"r\u2096" " = " + str(b)
-        rFinalL = Label(root_1, text=rFinalEq, font=eFont)
+        rFinalL = Label(root, text=rFinalEq, font=eFont)
         rFinalL.grid(columnspan=1, row=row, column=0)
         extLst.append(rFinalL)
 
         sFinalEq = u"s\u2096" + " = " + str(s_j) 
-        sFinalL = Label(root_1, text=sFinalEq, font=eFont)
+        sFinalL = Label(root, text=sFinalEq, font=eFont)
         sFinalL.grid(columnspan=1, row=row, column=1)
         extLst.append(sFinalL)
 
         tFinalEq = u"t\u2096" + " = " + str(t_j)
-        tFinalL = Label(root_1, text=tFinalEq, font=eFont)
+        tFinalL = Label(root, text=tFinalEq, font=eFont)
         tFinalL.grid(columnspan=1, row=row, column=2)
         extLst.append(tFinalL)
         row+=1
 
-        refLabel = Label(root_1, text=u"r\u2096"+"= a"+u"s\u2096"+"+ b"+u"t\u2096", font=eFont)
+        refLabel = Label(root, text=u"r\u2096"+"= a"+u"s\u2096"+"+ b"+u"t\u2096", font=eFont)
         refLabel.grid(columnspan=3, row=row)
         extLst.append(refLabel)
         row+=1
 
         finalEq = str(b) + " = " + str(aF) + "(" + str(s_j) + ") + " + str(bF) + "(" + str(t_j) + ")"
-        finalL = Label(root_1, text=finalEq, font=eFont)
+        finalL = Label(root, text=finalEq, font=eFont)
         finalL.grid(columnspan=3, row=row)
         extLst.append(finalL)
         row+=1
 
-        buffer = Label(root_1)
+        buffer = Label(root)
         buffer.grid(columnspan=3, row=row)
     else:
         Emsg = 'Input is not an INT'
@@ -236,15 +236,19 @@ def extCmd():
 
 # GCD button 
 gcdText = StringVar()
-gcdButton = Button(root_1, textvariable=gcdText, font=bFont, command=gcdCmd)
+gcdButton = Button(root, textvariable=gcdText, font=bFont, command=gcdCmd)
 gcdText.set('GCD using Euclidean')
 gcdButton.grid(columnspan=1, row=3, column=0)
 
 # Extended 
 extText = StringVar()
-extButton = Button(root_1, textvariable=extText, font=bFont, command=extCmd)
+extButton = Button(root, textvariable=extText, font=bFont, command=extCmd)
 extText.set('GCD and Bezout Coefficients using Extended Euclidean')
 extButton.grid(columnspan=2, row=3, column=1)
 
-root_1.mainloop()
+root.mainloop()
+
+
+
+
 
