@@ -112,16 +112,24 @@ def fermats():
     clearContent()
     calcText.set("Calculating...")
     row = 5
-    a = int(aEntry.get())
+    a = aEntry.get()
     p = int(pEntry.get())
-    n = int(nEntry.get())
+    n = nEntry.get()
     if not isprime(p):
         errorMSG = 'p is not a prime number'
         errorLabel = Label(root, text=errorMSG, font=iFont)
         errorLabel.grid(columnspan=3, row=row)
         widgLst.append(errorLabel)
         row+=1
+    elif not a.isdigit() or n.isdigit():
+        errorMSG = 'a and or n is not an int'
+        errorLabel = Label(root, text=errorMSG, font=iFont)
+        errorLabel.grid(columnspan=3, row=row)
+        widgLst.append(errorLabel)
+        row+=1
     else:
+        a = int(a)
+        n = int(n)
         step1Text = "Apply Euler's Totient Theorem to n"
         step1Label = Label(root, text=step1Text, font=eFont)
         step1Label.grid(columnspan=3, row=row, column=0)

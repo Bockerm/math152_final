@@ -21,6 +21,13 @@ instructions2 = Label(fInstructions, text="number of hours, days, months and/or 
 instructions1.pack(side='top')
 instructions2.pack(side='bottom')
 
+buffer = Label(root)
+buffer.grid(columnspan=3, row=1)
+
+
+
+
+
 
 
 
