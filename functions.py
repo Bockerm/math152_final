@@ -37,7 +37,6 @@ def fermatlittle(prime, a):
         return ("Input was not a prime number")
     
 # assumming you start off the week on a Sunday
-# rewrite to incorporate date and time input 
 def clockarithmetic (hours):
     timeofday = hours/24
     daysover = (hours-timeofday)/7
