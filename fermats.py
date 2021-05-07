@@ -121,7 +121,7 @@ def fermats():
         errorLabel.grid(columnspan=3, row=row)
         widgLst.append(errorLabel)
         row+=1
-    elif not a.isdigit() or n.isdigit():
+    elif not a.isdigit() or not n.isdigit():
         errorMSG = 'a and or n is not an int'
         errorLabel = Label(root, text=errorMSG, font=iFont)
         errorLabel.grid(columnspan=3, row=row)
